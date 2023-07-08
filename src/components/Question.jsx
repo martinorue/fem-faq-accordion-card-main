@@ -14,6 +14,7 @@ function Question ({ question, answer }) {
             <button className={`icon-arrow ${isActive ? 'active' : ''}`}><img src={iconArrow}/></button>
         </div>
         <p className={`answer ${!isActive ? 'hidden' : ''}`}>{answer}</p>
+      <div className='line-separator'></div>
     </div>
   )
 }
