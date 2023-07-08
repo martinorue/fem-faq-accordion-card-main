@@ -4,9 +4,11 @@
   --soft-red: hsl(14, 88%, 65%);
 
   /* Background gradient: */
-  --soft--violet: hsl(273, 75%, 66%);
-  --soft--blue: hsl(240, 73%, 65%);
+  --soft-violet: hsl(273, 75%, 66%);
+  --soft-blue: hsl(240, 73%, 65%);
 
+  /* Scrollbar*/
+  ---scrollbar-track-bg: hsl(253 70% 93%);
   /* Fonts */
   --font-kumbh-sans: 'Kumbh Sans', sans-serif;
 
@@ -21,7 +23,7 @@
 }
 
 body {
-  background: fixed linear-gradient(var(--soft--violet), var(--soft--blue));
+  background: fixed linear-gradient(var(--soft-violet), var(--soft-blue));
   font-family: var(--font-kumbh-sans);
 }
 
@@ -31,9 +33,12 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 30px 18px;
+  padding: 30px 25px;
   margin: 150px 30px 30px 30px;
   border-radius: 15px;
+  max-height: 430px;
+  position: relative;
+  top: -12px;
 }
 
 .main__hero-image,
@@ -57,18 +62,19 @@ body {
 .main__title {
   font-size: 3.2rem;
   text-align: center;
-  margin-top: 131px;
-  margin-top: 90px;
+  margin-top: 80px;
 }
 
 .main__questions-container {
   display: flex;
   flex-direction: column;
   gap: 15px;
+  overflow-y: scroll;
+  margin-top: 26px;
+  overflow-x: hidden;
 }
 
 .question-answer-wrapper {
-  border-bottom: 1px solid lightgray;
   padding-bottom: 10px;
   display: flex;
   flex-direction: column;
@@ -81,6 +87,7 @@ body {
   justify-content: space-between;
   gap: 60px;
   cursor: pointer;
+  align-items: baseline;
 }
 
 .question {
@@ -99,12 +106,55 @@ body {
   transform: rotate(180deg);
 }
 
+.line-separator {
+  display: block;
+}
+
+.line-separator::after {
+  display: block;
+  clear: both;
+  content: "";
+  position: relative;
+  left: 0;
+  bottom: -12px;
+  border-bottom: 1px solid var(---scrollbar-track-bg);
+}
+
 
 .answer {
   font-size: var(--body-size);
   color: slategray;
 }
 
+.line-separator::after,
+.answer {
+  width: 90%;
+}
+
 .hidden {
   display: none;
 }
+
+/*---------scrollbar-------------*/
+.main__questions-container::-webkit-scrollbar {
+  width: 10px;
+  border-radius: 5px;
+  margin: 12px;
+}
+
+.main__questions-container::-webkit-scrollbar-track {
+  background: var(---scrollbar-track-bg);
+  border-radius: 5px;
+}
+
+.main__questions-container::-webkit-scrollbar-thumb {
+  background: var(--soft-violet);
+  border-radius: 5px;
+  border: 2px solid var(---scrollbar-track-bg);
+}
+
+.main__questions-container::-webkit-scrollbar-thumb:hover {
+  background: hsl(273, 75%, 70%);
+}
+
+/*---------scrollbar-------------*/

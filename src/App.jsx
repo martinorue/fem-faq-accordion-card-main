@@ -11,8 +11,8 @@ function App () {
     <main className="main">
       <img className='main__hero-image' src={heroImage} alt=''/>
       <img className='main__hero-shadow' src={heroImageShadow} alt=''/>
-      <div className='main__questions-container'>
       <h1 className='main__title'>FAQ</h1>
+      <div className='main__questions-container'>
         {questions}
       </div>
     </main>
